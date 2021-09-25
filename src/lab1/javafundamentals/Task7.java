@@ -2,7 +2,7 @@ package lab1.javafundamentals;
 
 import java.util.Scanner;
 
-public class Task6 {
+public class Task7 {
 
     public static void execute() {
         Scanner in = new Scanner(System.in);
@@ -14,18 +14,26 @@ public class Task6 {
             arr[i] = in.nextDouble();
         }
 
-        double[][] matrix = new double[n][n];
-        int k = 0;
-        for (int i = 0; i < n; i++) {
-            k = i;
-            for (int j = 0; j < n; j++, k++) {
-                if (k >= n) {
-                    k = 0;
-                }
-                matrix[i][j] = arr[k];
-                System.out.print(matrix[i][j] + " ");
+        int i = 0;
+        while (i < n - 1) {
+            if (arr[i] <= arr[i + 1]) {
+                i++;
             }
-            System.out.println();
+            else {
+                double temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                if (i <= 0) {
+                    i = 0;
+                }
+                else {
+                    i--;
+                }
+            }
+        }
+
+        for (int j = 0; j < n; j++) {
+            System.out.print(arr[j]);
         }
         in.close();
     }

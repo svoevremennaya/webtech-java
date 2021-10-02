@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="webtech-java:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/webtech_java_jar</output-path>
+    <root id="archive" name="webtech-java.jar">
+      <element id="module-output" name="webtech-java" />
+    </root>
+  </artifact>
+</component>

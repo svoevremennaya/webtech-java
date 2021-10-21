@@ -8,15 +8,24 @@ public class ProgrammerBook extends Book {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ProgrammerBook) {
-            return this.language == ((ProgrammerBook)obj).language && this.level == ((ProgrammerBook)obj).level;
+        if (this == obj) { return true; }
+        if (null == obj) { return false; }
+        if (getClass() != obj.getClass()) { return false; }
+
+        ProgrammerBook prBook = (ProgrammerBook)obj;
+        if (!super.equals(prBook)) { return false; }
+
+        if (null == language) { return (language == prBook.language); }
+        else {
+            if (!language.equals(prBook.language)) { return false; }
         }
-        return false;
+        if (level != prBook.level) { return false; }
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return this.language.hashCode();
+        return (int)(31 * level + ((null == language) ? 0 : language.hashCode()));
     }
 
     @Override

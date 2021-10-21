@@ -27,15 +27,29 @@ public class Book implements Comparable<Book>{
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Book) {
-            return this.title == ((Book) obj).title && this.author == ((Book) obj).author && this.price == ((Book) obj).price;
+        if (this == obj) { return true; }
+        if (null == obj) { return false; }
+        if (getClass() != obj.getClass()) { return false; }
+
+        Book book = (Book)obj;
+        if (null == title) { return (title == book.title); }
+        else {
+            if (!title.equals(book.title)) { return false; }
         }
-        return false;
+
+        if (null == author) { return (author == book.author); }
+        else {
+            if (!author.equals(book.author)) { return false; }
+        }
+
+        if (price != book.price) {return false; }
+        if (isbn != book.isbn) {return false; }
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return this.title.hashCode() + this.author.hashCode() + this.price;
+        return (int)(31 * price + ((null == title) ? 0 : title.hashCode()) + ((null == author ? 0 : author.hashCode())) + 31 * isbn);
     }
 
     @Override
